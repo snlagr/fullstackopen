@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Persons = ({persons, searchFilter, deletePerson}) => {
+    if (persons.length === 0) return <div>No entries yet, please add one.</div>
     return (
       persons
         .filter(e => e.name.toLowerCase().includes(searchFilter.toLowerCase()))

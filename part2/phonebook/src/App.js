@@ -30,6 +30,11 @@ const App = () => {
       .then(names => {
         setPersons(names)
       })
+      .catch(err => {
+        setStyle('error')
+        setMessage("error fetching data from backend api")
+        setTimeout(() => {setMessage(null)}, 5000)
+      })
   }, [])
 
   const addPerson = (event) => {
@@ -70,6 +75,11 @@ const App = () => {
         setPersons(persons.concat(newPerson))
         setNewName('')
         setNewNumber('')
+      })
+      .catch(err => {
+        setStyle('error')
+        setMessage(err.response.data.error)
+        setTimeout(() => {setMessage(null)}, 5000)
       })
   }
 
