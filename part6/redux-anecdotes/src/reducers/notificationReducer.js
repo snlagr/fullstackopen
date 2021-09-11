@@ -7,11 +7,23 @@ const reducer = (state = '', action) => {
   }
 }
 
-export const notificationChange = notification => {
-  return {
-    type: 'NOTIFY',
-    notification
+// let timeoutID = null
+export const setNotification = (notification, time) => {
+  return dispatch => {
+    // clearInterval(timeoutID)
+    dispatch({
+      type: 'NOTIFY',
+      notification
+    })
+    return setTimeout(() => dispatch({type: 'NOTIFY', notification: ''}), time * 1000)
   }
 }
+
+// export const notificationChange = notification => {
+//   return {
+//     type: 'NOTIFY',
+//     notification
+//   }
+// }
 
 export default reducer
